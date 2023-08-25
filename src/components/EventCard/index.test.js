@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import EventCard from "./index";
+import { getMonth } from "../../helpers/Date";
 
 describe("When a event card is created", () => {
   it("an image is display with alt value", () => {
@@ -23,7 +24,7 @@ describe("When a event card is created", () => {
       />
     );
     const titleElement = screen.getByText(/test event/);
-    const monthElement = screen.getByText(/avril/);
+    const monthElement = screen.getByText(getMonth(new Date("2022-04-01")));
     const labelElement = screen.getByText(/test label/);
     expect(titleElement).toBeInTheDocument();
     expect(labelElement).toBeInTheDocument();
