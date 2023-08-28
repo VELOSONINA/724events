@@ -17,13 +17,8 @@ describe("When a button is created", () => {
       const onClick = jest.fn();
       render(<Button onClick={onClick} />);
       const buttonElement = screen.getByTestId("button-test-id");
-      fireEvent(
-        buttonElement,
-        new MouseEvent("click", {
-          bubbles: true,
-          cancelable: true,
-        })
-      );
+      fireEvent.click(buttonElement);
+      
       expect(onClick.mock.calls.length).toBeGreaterThan(0);
     });
   });

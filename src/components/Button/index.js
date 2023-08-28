@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import "./style.scss";
 
 export const BUTTON_TYPES = {
-  DEFAULT: 1,
-  SUBMIT: 2,
+  DEFAULT: 'DEFAULT',
+  SUBMIT: 'SUBMIT',
 };
 
 const Button = ({ title, onClick, type, disabled, children }) => {
@@ -54,7 +54,7 @@ const Button = ({ title, onClick, type, disabled, children }) => {
 Button.propTypes = {
   title: PropTypes.string,
   onClick: PropTypes.func,
-  type: PropTypes.number,
+  type: PropTypes.string,
   disabled: PropTypes.bool,
   children: PropTypes.node,
 };
