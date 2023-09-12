@@ -19,9 +19,9 @@ describe("When Form is created", () => {
       
       fireEvent.click(screen.getByTestId("button-test-id"));
       
-      await waitFor(() => {
+      await screen.findByText("En cours");
+      await screen.findByText("Envoyer");
       expect(onSuccess).toHaveBeenCalled();
-    });
   });
 });
 });
