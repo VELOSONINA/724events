@@ -1,7 +1,7 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen} from "@testing-library/react";
 import Modal from "./index";
 
 describe("When Modal data is created", () => {
@@ -21,16 +21,11 @@ describe("When Modal data is created", () => {
         </Modal>
       );
       expect(screen.queryByText("modal content")).not.toBeInTheDocument();
-      fireEvent(
-        screen.getByTestId("open-modal"),
-        new MouseEvent("click", {
-          cancelable: true,
-          bubbles: true,
-        })
-      );
-
-    });
-  });
+      fireEvent.click(screen.getByTestId("open-modal"));
+ 
+      expect(screen.findByText("modal content"));
+   });
+});
 
   describe("and a click is triggered to the close button modal", () => {
     it("the content of the modal is hide", async () => {
@@ -41,13 +36,7 @@ describe("When Modal data is created", () => {
       );
 
       expect(screen.getByText("modal content")).toBeInTheDocument();
-      fireEvent(
-        screen.getByTestId("close-modal"),
-        new MouseEvent("click", {
-          cancelable: true,
-          bubbles: true,
-        })
-      );
+      fireEvent.click(screen.getByTestId("close-modal"))
 
       expect(screen.queryByText("modal content")).not.toBeInTheDocument();
     });
