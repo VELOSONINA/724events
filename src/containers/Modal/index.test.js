@@ -21,8 +21,13 @@ describe("When Modal data is created", () => {
         </Modal>
       );
       expect(screen.queryByText("modal content")).not.toBeInTheDocument();
-      fireEvent.click(screen.getByTestId("open-modal"));
- 
+      fireEvent(
+        screen.getByTestId("open-modal"),
+        new MouseEvent("click", {
+          cancelable: true,
+          bubbles: true,
+        })
+      );
       expect(screen.findByText("modal content"));
    });
 });
@@ -36,7 +41,13 @@ describe("When Modal data is created", () => {
       );
 
       expect(screen.getByText("modal content")).toBeInTheDocument();
-      fireEvent.click(screen.getByTestId("close-modal"))
+      fireEvent(
+        screen.getByTestId("close-modal"),
+        new MouseEvent("click", {
+          cancelable: true,
+          bubbles: true,
+        })
+      );
 
       expect(screen.queryByText("modal content")).not.toBeInTheDocument();
     });
