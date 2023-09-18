@@ -16,8 +16,13 @@ describe("When Form is created", () => {
     it("the success action is called", async () => {
       const onSuccess = jest.fn();
       render(<Form onSuccess={onSuccess} />);
-      
-      fireEvent.click(screen.getByTestId("button-test-id"));
+      fireEvent(
+        await screen.findByTestId("button-test-id"),
+        new MouseEvent("click", {
+          cancelable: true,
+          bubbles: true,
+        })
+      );
       
       await screen.findByText("En cours");
       await screen.findByText("Envoyer");
