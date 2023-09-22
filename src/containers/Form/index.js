@@ -60,8 +60,8 @@ Form.propTypes = {
 }
 
 Form.defaultProps = {
-  onError: () => {},
-  onSuccess: () => {"Envoyer"},
+  onError: () => null,
+  onSuccess: () => null,
 }
 
 export default Form;
